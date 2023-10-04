@@ -1,6 +1,6 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/NavBar'
-import MovieGrid from './components/MovieGrid'
+import MovieGrid from './components/GameGrid'
 function App() {
    return(
     <Grid templateAreas={{

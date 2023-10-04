@@ -3,7 +3,7 @@ import { SimpleGrid, Text } from "@chakra-ui/react"
 import FetchGamesResponse from "../hooks/FetchGamesResponse"
 import GameCard from "./GameCard"
 
-const MovieGrid = () => {
+const GameGrid = () => {
     const {games, error} = FetchGamesResponse();
     return(
         <>
@@ -17,4 +17,4 @@ const MovieGrid = () => {
         
     )
 }
-export default MovieGrid 
+export default GameGrid 
