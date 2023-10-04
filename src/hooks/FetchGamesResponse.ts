@@ -27,9 +27,9 @@ const FetchGamesResponse = () => {
     const [error, setError] = useState('');
     const [isLoading, setLoading] = useState(false);
     useEffect(() => {
-        const contoller = new AbortController();
+        const controller = new AbortController();
         setLoading(true);
-        apiClient.get<FetchGames>('/games', {signal : contoller.signal})
+        apiClient.get<FetchGames>('/games', {signal : controller.signal})
                  .then(res => {
                     setGames(res.data.results);
                     setLoading(false);
@@ -40,7 +40,7 @@ const FetchGamesResponse = () => {
                     setLoading(false);
                 });
 
-        return () => contoller.abort();
+        return () => controller.abort();
     }, []);
 
     return {games, error, isLoading};

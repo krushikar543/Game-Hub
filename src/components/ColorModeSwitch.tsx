@@ -7,8 +7,8 @@ const ColorModeSwitch = () => {
     const [text, settext] = useState('Light Mode');
     const changetext = () => {
         toggleColorMode();
-        if(text === 'Light Mode') settext('Dark Mode');
-        else settext('Light Mode');
+        if(colorMode === 'dark') settext('Light Mode');
+        else settext('Dark Mode');
     }
     return(
         <HStack >
