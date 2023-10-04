@@ -1,16 +1,18 @@
 import axios from "axios"
-import { Text } from "@chakra-ui/react"
+import { SimpleGrid, Text } from "@chakra-ui/react"
 import FetchGamesResponse from "../hooks/FetchGamesResponse"
+import GameCard from "./GameCard"
 
 const MovieGrid = () => {
     const {games, error} = FetchGamesResponse();
     return(
         <>
         {error && <Text> {error} </Text>}
-        <ul>
-            {games?.map(game => <li key={game.id}> {game.name} </li>)}
-            
-        </ul>
+        <SimpleGrid spacing={10} columns={{sm : 1, md : 2, lg : 3}} padding='10px'>
+            {games?.map((game) => (
+                <GameCard key = {game.id} game = {game}/>
+            ))}
+        </SimpleGrid>
         </>
         
     )
