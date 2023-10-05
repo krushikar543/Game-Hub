@@ -7,11 +7,12 @@ import {Genre} from '../hooks/FetchGenres'
 interface Props{
     selectedPlatform : Platform | null;
     selectedGenre : Genre | null;
-    selectedsort : string | null;
+    selectedsort : string;
+    searchText : string
 }
 
-const GameGrid = ({selectedPlatform, selectedGenre, selectedsort} : Props) => {
-    const {games, error, isLoading} = FetchGamesResponse(selectedGenre, selectedPlatform, selectedsort);
+const GameGrid = ({selectedPlatform, selectedGenre, selectedsort, searchText} : Props) => {
+    const {games, error, isLoading} = FetchGamesResponse(selectedGenre, selectedPlatform, selectedsort, searchText);
     const skeletons = [1, 2, 3, 4, 5, 6];
     return(
         <>
