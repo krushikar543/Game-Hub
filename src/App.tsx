@@ -7,6 +7,7 @@ import GameGrid from './components/GameGrid'
 import { Platform } from './hooks/FetchGamesResponse'
 import PlatformSelector from './components/PlatformSelector'
 import SortSelector from './components/SortSelector'
+import HeadingText from './components/HeadingText'
 
 function App() {
    const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -32,6 +33,7 @@ function App() {
           <PlatformSelector selectedPlatform = {selectedPlatform} onSelectPlatform = {(platform) => setSelectedPlatform(platform)}/>
           <SortSelector sortName={sort} onSelectSortProp={(sortOrder) => SetSort(sortOrder)}/>
         </HStack>
+        <HeadingText genre={selectedGenre} platform={selectedPlatform} />
         <GameGrid searchText = {searchText} selectedsort = {sort} selectedPlatform = {selectedPlatform} selectedGenre={selectedGenre}/>
         
       </GridItem>
