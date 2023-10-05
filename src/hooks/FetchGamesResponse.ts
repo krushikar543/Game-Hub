@@ -22,14 +22,14 @@ interface FetchGames{
     results : Game[];
 }
 
-const FetchGamesResponse = (selectedGenre : Genre | null) => {
+const FetchGamesResponse = (selectedGenre : Genre | null, selectedPlatform : Platform | null) => {
     const [games, setGames] = useState<Game[]>([]);
     const [error, setError] = useState('');
     const [isLoading, setLoading] = useState(false);
     useEffect(() => {
         const controller = new AbortController();
         setLoading(true);
-        apiClient.get<FetchGames>('/games', {signal : controller.signal, params : {genres: selectedGenre?.id}})
+        apiClient.get<FetchGames>('/games', {signal : controller.signal, params : {genres: selectedGenre?.id, platforms: selectedPlatform?.id}})
                  .then(res => {
                     setGames(res.data.results);
                     setLoading(false);
@@ -41,7 +41,7 @@ const FetchGamesResponse = (selectedGenre : Genre | null) => {
                 });
 
         return () => controller.abort();
-    }, [selectedGenre]);
+    }, [selectedGenre, selectedPlatform]);
 
     return {games, error, isLoading};
 }

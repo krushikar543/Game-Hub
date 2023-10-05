@@ -1,15 +1,16 @@
 import axios from "axios"
 import { SimpleGrid, Text } from "@chakra-ui/react"
-import FetchGamesResponse from "../hooks/FetchGamesResponse"
+import FetchGamesResponse, { Platform } from "../hooks/FetchGamesResponse"
 import GameCard from "./GameCard"
 import GameCardSkeleton from "./GameCardSkeleton"
 import {Genre} from '../hooks/FetchGenres'
 interface Props{
+    selectedPlatform : Platform | null;
     selectedGenre : Genre | null;
 }
 
-const GameGrid = ({selectedGenre} : Props) => {
-    const {games, error, isLoading} = FetchGamesResponse(selectedGenre);
+const GameGrid = ({selectedPlatform, selectedGenre} : Props) => {
+    const {games, error, isLoading} = FetchGamesResponse(selectedGenre, selectedPlatform);
     const skeletons = [1, 2, 3, 4, 5, 6];
     return(
         <>
