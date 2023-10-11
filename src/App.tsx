@@ -33,7 +33,7 @@ function App() {
           <PlatformSelector selectedPlatform = {selectedPlatform} onSelectPlatform = {(platform) => setSelectedPlatform(platform)}/>
           <SortSelector sortName={sort} onSelectSortProp={(sortOrder) => SetSort(sortOrder)}/>
         </HStack>
-        <HeadingText genre={selectedGenre} platform={selectedPlatform} />
+        <HeadingText genre={selectedGenre} platform={selectedPlatform} searchText={searchText}/>
         <GameGrid searchText = {searchText} selectedsort = {sort} selectedPlatform = {selectedPlatform} selectedGenre={selectedGenre}/>
         
       </GridItem>
